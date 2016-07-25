@@ -1,0 +1,18 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Jul 25 17:46:39 2016
+
+@author: michaelroberts
+"""
+
+import pandas as pd
+import numpy as np
+
+df = pd.DataFrame({'Col A':['a','b','b','b'],'Col B':['e','e','f','f'],'Col C':['g','g','g','g']})
+df['Dimp'] = 1
+df = pd.pivot_table(df,index=['Col A'],columns = ['Col B'], aggfunc = np.sum)
+
+writer = pd.ExcelWriter('SheepsExcel.xlsx', engine = 'xlsxwriter')
+
+df.to_excel(writer, sheet_name='Sheeps Feet')
+df.to_excel(writer, sheet_name='Sheeps Eyes')
