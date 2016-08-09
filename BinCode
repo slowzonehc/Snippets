@@ -1,0 +1,18 @@
+import pandas as pd
+import numpy as np
+
+class pyFrame():
+    
+    def __init__(self, A):
+        self.df_a = A
+
+    def price_bands(self):
+        max_value = max(self.df_a)
+        bins = 0.1      
+        bands = np.arange(0,max_value,bins)       
+        return bands
+  
+    def run(self):
+        bands = self.price_bands()
+        output = pd.cut(self.df_a[0],bands)
+        return output
